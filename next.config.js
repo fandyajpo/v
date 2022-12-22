@@ -1,6 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-}
+  experimental: {
+    scrollRestoration: true,
+  },
 
-module.exports = nextConfig
+  images: {
+    domains: ["cdn.discordapp.com"],
+  },
+};
+
+module.exports = nextConfig;

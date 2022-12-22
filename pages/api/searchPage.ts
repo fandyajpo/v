@@ -9,5 +9,16 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  res.status(200).json(data as any);
+  //@ts-ignored
+  if (!req.query.q) return res.status(404).json({ data: false });
+
+  //@ts-ignored
+  const datas: any = data.shoes.filter((d) =>
+    //@ts-ignored
+    d.name.toLowerCase().includes(req.query.q)
+  );
+
+  const f = datas.map((s: any) => s);
+  //@ts-ignored
+  res.status(200).json({ data: f });
 }

@@ -9,5 +9,11 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  res.status(200).json(data as any);
+  //@ts-ignored
+  //@ts-ignored
+  if (!req.query.id) return res.status(404).json({ data: false });
+
+  const datas: any = data.shoes.filter((d) => d.id === req.query.id);
+  //@ts-ignored
+  res.status(200).json({ data: datas[0] });
 }
