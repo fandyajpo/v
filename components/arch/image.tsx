@@ -18,4 +18,5 @@ const ProductImage = memo((props: Props) => {
   );
 });
 
+ProductImage.displayName = "ProductImage";
 export default ProductImage;
