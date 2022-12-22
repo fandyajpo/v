@@ -13,8 +13,8 @@ const ProductCardWrap = memo((props: Props) => {
         className={`bg-gradient-to-br from-blue-500 to-violet-600 w-44 md:w-64 h-full absolute left-0 z-10 duration-1000 rounded-r-xl md:rounded-xl shadow-md `}
       ></div>
       <div className="product w-full h-72 md:h-80 flex-row flex items-center overflow-auto gap-x-2 pl-14 md:pl-36 pr-4">
-        {data.map((product, _) => {
-          return <ProductCard product={product} />;
+        {data.map((product, i) => {
+          return <ProductCard key={i} product={product} />;
         })}
       </div>
     </div>

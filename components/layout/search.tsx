@@ -167,8 +167,9 @@ const Modal = (props: Props) => {
               ) : null}
               <div className="gap-y-2 flex flex-col">
                 {qData.length > 0 &&
-                  qData?.map((s: any) => (
+                  qData?.map((s: any, i: any) => (
                     <Link
+                      key={i}
                       onClick={getSearch}
                       href={{
                         pathname: "/detail",
@@ -193,7 +194,10 @@ const Modal = (props: Props) => {
               {searchHistory.length > 0 &&
                 searchHistory.map((a, l) => {
                   return (
-                    <div className="flex items-center justify-between px-4 border-b mb-2">
+                    <div
+                      key={l}
+                      className="flex items-center justify-between px-4 border-b mb-2"
+                    >
                       <p className="py-1">{a}</p>
                       <button
                         className="text-gray-400"

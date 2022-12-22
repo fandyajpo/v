@@ -40,7 +40,7 @@ const ProductInCart = () => {
       {cart?.length > 0 ? (
         cart.map((a: any, i) => {
           return (
-            <div className="flex flex-col gap-y-4">
+            <div key={i} className="flex flex-col gap-y-4">
               <div className="flex items-center gap-x-2">
                 <input
                   type="checkbox"

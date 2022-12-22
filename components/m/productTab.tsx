@@ -150,9 +150,9 @@ const ProductTab = () => {
 
                     {filterData[0]?.sizes.length > 0 &&
                       //@ts-ignored
-                      filterData[0]?.sizes.map((d) => {
+                      filterData[0]?.sizes.map((d, i) => {
                         return (
-                          <div className="relative grayscale">
+                          <div key={i} className="relative grayscale">
                             <input
                               disabled
                               className="sr-only peer"
@@ -176,9 +176,9 @@ const ProductTab = () => {
                     {/* @ts-ignored */}
                     {filterData[0]?.colors.length > 0 &&
                       //@ts-ignored
-                      filterData[0]?.colors.map((c: any) => {
+                      filterData[0]?.colors.map((c: any, i) => {
                         return (
-                          <div className="relative grayscale">
+                          <div key={i} className="relative grayscale">
                             <input
                               disabled
                               className="sr-only peer"

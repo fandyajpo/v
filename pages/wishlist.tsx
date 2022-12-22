@@ -34,9 +34,12 @@ const Search = () => {
         <div className="md:max-w-2xl lg:max-w-7xl w-full h-auto flex flex-col md:flex-row grow flex-shrink-0 gap-4 bg-white">
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 grid-flow-row gap-4 w-full p-2 md:p-0">
             {wishlist?.length > 0 ? (
-              wishlist?.map((d: any) => {
+              wishlist?.map((d: any, i) => {
                 return (
-                  <div className="p-2 border border-r-4 rounded-xl w-full ">
+                  <div
+                    key={i}
+                    className="p-2 border border-r-4 rounded-xl w-full "
+                  >
                     <Link
                       href={{
                         pathname: "/detail",

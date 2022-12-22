@@ -18,9 +18,9 @@ const ProductOrder = memo((props: Props) => {
       <p className="py-2">- Choose Color dude</p>
       <div className="flex flex-row items-center overflow-y-scroll gap-x-2">
         {color?.length > 0 &&
-          color.map((s: any) => {
+          color.map((s: any, i) => {
             return (
-              <div className="flex-none border w-fit rounded-md">
+              <div key={i} className="flex-none border w-fit rounded-md">
                 <div className="flex items-center p-2 gap-x-2">
                   <div
                     className="w-4 h-4 rounded-md"
@@ -35,9 +35,9 @@ const ProductOrder = memo((props: Props) => {
       <p className="py-2">- Choose Size</p>
       <div className="flex flex-row items-center overflow-y-scroll gap-x-2">
         {size?.length > 0 &&
-          size.map((s: any) => {
+          size.map((s: any, i) => {
             return (
-              <div className="flex-none border w-fit rounded-md">
+              <div key={i} className="flex-none border w-fit rounded-md">
                 <div className="flex items-center p-2 gap-x-2">{s}</div>
               </div>
             );
