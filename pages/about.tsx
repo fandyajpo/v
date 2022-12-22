@@ -61,9 +61,9 @@ const About = () => {
       <Image src={NextJS} alt={"nextjs"} />
       <p className="text-violet-600 text-4xl font-bold">Fanvercel 🤙</p>
 
-      {about.map((f) => {
+      {about.map((f, e) => {
         return (
-          <div>
+          <div key={e}>
             <p className="text-xl font-bold">{f.title}</p>
             {f.image ? (
               <Image
@@ -81,9 +81,12 @@ const About = () => {
 
       <p className="text-violet-600 text-4xl font-bold py-8">Ref</p>
       <div className="flex flex-row items-center flex-wrap w-full gap-2">
-        {ref.map((f) => {
+        {ref.map((f, t) => {
           return (
-            <p className="bg-violet-500  text-white p-2 rounded-full font-bold ">
+            <p
+              key={t}
+              className="bg-violet-500  text-white p-2 rounded-full font-bold "
+            >
               {f}
             </p>
           );
