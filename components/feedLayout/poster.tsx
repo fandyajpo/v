@@ -28,7 +28,7 @@ const Poster = () => {
             key={i}
             className="bg-white max-w-7xl flex flex-col gap-y-4 py-4 md:p-4  max-h-7xl md:rounded-xl border-y md:border border-gray-300"
           >
-            <div className=" flex items-center gap-x-4 justify-between px-4 md:px-0">
+            <div className=" flex items-center gap-x-4 justify-between px-2 md:px-0">
               <div className="flex flex-row items-center gap-x-2 ">
                 <div className="w-14 h-14 rounded-full bg-gray-300" />
                 <div>
@@ -58,7 +58,7 @@ const Poster = () => {
               height={300}
               className="w-full h-96 md:rounded-xl"
             />
-            <div className="px-4 md:px-0 flex flex-col gap-y-2">
+            <div className="px-2 md:px-0 flex flex-col gap-y-2">
               <div className="flex flex-row items-center gap-x-4">
                 <CommentInsta /> <LoveInsta />
                 <SaveInsta />

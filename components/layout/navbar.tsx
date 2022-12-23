@@ -72,7 +72,7 @@ const Navbar = () => {
             <div className="w-full rounded-2xl h-10 md:h-12 outline-none bg-gray-100 border border-gray-300 shadow-sm" />
           </button>
           <div
-            className={`w-auto h-20 grow flex items-center justify-end gap-x-3`}
+            className={`w-auto h-20 grow flex items-center justify-end gap-x-2`}
           >
             <Link href={"/wishlist"} className="buttonEffect">
               <div
@@ -118,17 +118,20 @@ const Navbar = () => {
                 />
               </div>
             </Link>
-            <Link href={"/feed"} className="buttonEffect">
-              <div
-                className={`lg:hidden ${
-                  router.pathname === "/feed" ? "bg-blue-500" : "bg-white"
-                } duration-300 bg-white w-10 h-10 rounded-full justify-center items-center flex border border-blue-600 active:scale-95`}
-              >
-                <DirectMessage
-                  color={router.pathname === "/feed" ? "white" : "black"}
-                />
-              </div>
-            </Link>
+
+            {router.pathname === "/feed" ? (
+              <Link href={"/feed"} className="buttonEffect">
+                <motion.div
+                  className={`lg:hidden ${
+                    router.pathname === "/feed" ? "bg-blue-500" : "bg-white"
+                  } duration-300 bg-white w-10 h-10 rounded-full justify-center items-center flex border border-blue-600 active:scale-95`}
+                >
+                  <DirectMessage
+                    color={router.pathname === "/feed" ? "white" : "black"}
+                  />
+                </motion.div>
+              </Link>
+            ) : null}
           </div>
         </div>
       </div>
