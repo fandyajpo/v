@@ -1,4 +1,11 @@
-import { HomeWishlist, Transaction, Feed, Home } from "../../public/assets";
+import { motion } from "framer-motion";
+import {
+  HomeWishlist,
+  Transaction,
+  Feed,
+  Home,
+  UserProfileButton,
+} from "../../public/assets";
 import { useCallback, useMemo } from "react";
 import { useRouter } from "next/router";
 
@@ -18,37 +25,32 @@ const BottomTab = () => {
     return router.push("/transaction");
   }, []);
 
+  const goToProfile = useCallback(() => {
+    return router.push("/account");
+  }, []);
+
   return (
-    <div
-      className={`flex bg-white/30 backdrop-blur-md shadow-md fixed bottom-0 z-10 justify-center w-full items-center h-fit md:block lg:hidden border-t`}
+    <motion.div
+      // layoutId="navigate"
+      className={`flex bg-white/80 backdrop-blur-md shadow-md fixed bottom-0 z-10 justify-center w-full items-center h-fit md:block lg:hidden border-t-2`}
     >
       {useMemo(() => {
         return (
           <div className="flex justify-center items-center w-full">
-            <div className="md:max-w-2xl lg:max-w-7xl h-16 w-full flex  items-center justify-between shadow-sm gap-x-4 px-6 ">
+            <div className="md:max-w-2xl lg:max-w-7xl h-16 w-full flex  items-center justify-around shadow-sm">
               <button
                 onClick={goToHome}
-                className={`buttonEffect flex flex-col items-center active:scale-90 duration-300 ${
+                className={`buttonEffect flex flex-col items-center active:scale-90 w-14 duration-300 ${
                   router.pathname === "/" ? "text-green-500" : "text-slate-700"
                 }`}
               >
                 <Home />
                 <p className="text-[10px]">Home</p>
               </button>
-              <button
-                onClick={goToFeed}
-                className={`buttonEffect flex flex-col items-center active:scale-90 duration-300 ${
-                  router.pathname === "/feed"
-                    ? "text-green-500"
-                    : "text-slate-700"
-                }`}
-              >
-                <Feed />
-                <p className="text-[10px]">Feed</p>
-              </button>
+
               <button
                 onClick={goToWishlist}
-                className={`buttonEffect flex flex-col items-center active:scale-90 duration-300 ${
+                className={`buttonEffect flex flex-col items-center active:scale-90 w-14   duration-300 ${
                   router.pathname === "/wishlist"
                     ? "text-green-500"
                     : "text-slate-700"
@@ -64,8 +66,23 @@ const BottomTab = () => {
                 <p className="text-[10px]">Wishlist</p>
               </button>
               <button
+                onClick={goToFeed}
+                className="buttonEffect relative flex items-center justify-center"
+              >
+                <div
+                  className={` flex flex-col items-center bg-white justify-center active:scale-90 absolute border border-black rounded-full w-14 h-14 -translate-y-8 duration-300 ${
+                    router.pathname === "/feed"
+                      ? "text-green-500 border-green-500"
+                      : "text-slate-700"
+                  }`}
+                >
+                  <Feed />
+                </div>
+                <p className="text-[10px] text-black pt-4 relative">Feed</p>
+              </button>
+              <button
                 onClick={goTotransaction}
-                className={`buttonEffect flex flex-col items-center active:scale-90 duration-300 ${
+                className={`buttonEffect flex flex-col items-center active:scale-90 w-14 duration-300 ${
                   router.pathname === "/transaction"
                     ? "text-green-500"
                     : "text-slate-700"
@@ -74,11 +91,22 @@ const BottomTab = () => {
                 <Transaction />
                 <p className="text-[10px]">Transaction</p>
               </button>
+              <button
+                onClick={goToProfile}
+                className={`buttonEffect flex flex-col items-center active:scale-90 w-14 duration-300 ${
+                  router.pathname === "/account"
+                    ? "text-green-500"
+                    : "text-slate-700"
+                }`}
+              >
+                <UserProfileButton />
+                <p className="text-[10px]">Profile</p>
+              </button>
             </div>
           </div>
         );
       }, [router])}
-    </div>
+    </motion.div>
   );
 };
 

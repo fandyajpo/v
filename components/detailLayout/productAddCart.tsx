@@ -30,7 +30,7 @@ const ProductAddCart = memo((props: Props) => {
   return (
     <div className="flex flex-col gap-y-2">
       <div className="flex items-center justify-between py-3">
-        <p className="text-base font-light">Harga :</p>
+        <p className="text-base font-light">Price :</p>
         <p className="text-xl font-bold">$ {price}</p>
       </div>
       <button

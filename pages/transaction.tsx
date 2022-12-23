@@ -1,7 +1,7 @@
 import Layout from "../components/layout";
 
 const Transaction = () => {
-  return <div>Test</div>;
+  return <div className="w-full h-screen">Test</div>;
 };
 
 Transaction.layout = Layout;

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <div className=" justify-center w-full hidden lg:flex">
+    <div className=" justify-center w-full hidden lg:flex pt-24">
       <div className="md:max-w-2xl lg:max-w-7xl h-16 md:h-20 w-screen flex justify-center items-center  shadow-sm gap-x-4 px-2">
         <div className="pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl ">
           <div className="grid row-gap-10 mb-8 lg:grid-cols-6">

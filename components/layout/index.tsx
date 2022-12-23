@@ -3,14 +3,15 @@ import Header from "./header";
 import { ChildrenInterface } from "../../types/Children";
 import BottomTab from "../m/bottomTab";
 import { useRouter } from "next/router";
-import { useMemo } from "react";
+import { Fragment, useMemo } from "react";
 import ProductTab from "../m/productTab";
 import { useContext, useEffect } from "react";
 import { GlobalContext } from "../../lib/Context";
 import Footer from "./footer";
+import FeedNavigation from "./feedNavigation";
 const Layout = ({ children }: ChildrenInterface) => {
   const { state, dispatch } = useContext(GlobalContext);
-
+  const { product } = useMemo(() => state, [state.product]);
   useEffect(() => {
     async function Getter() {
       console.log("fetch again");
@@ -22,15 +23,15 @@ const Layout = ({ children }: ChildrenInterface) => {
         payload: { product: data.shoes },
       });
     }
-    if (state?.product.length < 1) {
+    if (product?.length < 1) {
       Getter();
     }
-  }, []);
+  }, [state.product]);
 
   const router = useRouter();
 
   const RouterManager = useMemo(() => {
-    if (router.pathname.includes("/detail")) return <ProductTab />;
+    if (router.pathname === "/detail") return <ProductTab />;
     if (
       router.pathname === "/" ||
       router.pathname === "/feed" ||
@@ -42,14 +43,30 @@ const Layout = ({ children }: ChildrenInterface) => {
     return null;
   }, [router]);
 
+  const FooterManager = useMemo(() => {
+    if (router.pathname !== "/feed")
+      return (
+        <div className="w-full h-full">
+          <Footer />
+        </div>
+      );
+  }, [router]);
+
   return (
     <>
-      <Navbar />
-      <div className="flex justify-center bg-white w-full h-full">
-        {children}
+      <div className="h-full w-full flex flex-col justify-between relative">
+        {useMemo(() => {
+          return <FeedNavigation />;
+        }, [])}
+        <div className="w-full h-full">
+          <Navbar />
+          <main className="flex justify-center bg-white w-full h-full">
+            {children}
+          </main>
+        </div>
+        {FooterManager}
       </div>
-      <Footer />
-      {RouterManager}
+      <div>{RouterManager}</div>
     </>
   );
 };

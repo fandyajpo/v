@@ -123,6 +123,7 @@ a {
 /* Handle */
 .product::-webkit-scrollbar-thumb {
   background: rgb(88, 59, 253);
+  border-radius: 90px;
 }
 
 ::-webkit-scrollbar {

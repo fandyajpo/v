@@ -22,7 +22,7 @@ const ProductInCart = () => {
   );
 
   return (
-    <div className="flex flex-col gap-y-2 w-full p-2 md:p-0">
+    <div className="flex flex-col gap-y-2 w-full max-h-max p-2 md:p-0">
       <div className="flex flex-col gap-y-2">
         <div className="flex items-center gap-x-2">
           <input
@@ -32,7 +32,7 @@ const ProductInCart = () => {
             name="vehicle1"
             value="Bike"
           />
-          <p className="text-gray-500">Pilih Semua</p>
+          <p className="text-gray-500">Pilih Semua Item</p>
         </div>
       </div>
       <div className="w-full h-1 bg-gray-300" />
@@ -40,7 +40,7 @@ const ProductInCart = () => {
       {cart?.length > 0 ? (
         cart.map((a: any, i) => {
           return (
-            <div key={i} className="flex flex-col gap-y-4">
+            <div key={i} className="flex flex-col gap-y-4 h-full">
               <div className="flex items-center gap-x-2">
                 <input
                   type="checkbox"
@@ -80,8 +80,8 @@ const ProductInCart = () => {
           );
         })
       ) : (
-        <div className="h-screen">
-          <p className="text-3xl font-bold">You dont have any order item</p>
+        <div className="max-h-max h-full flex items-center justify-center pt-24">
+          <p className="md:text-3xl font-bold">You dont have any order item</p>
         </div>
       )}
     </div>

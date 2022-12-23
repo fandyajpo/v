@@ -5,7 +5,8 @@ import Link from "next/link";
 import {
   SearchIcon,
   CartButton,
-  UserProfileButton,
+  DirectMessage,
+  MainSvg,
   HomeWishlist,
   LeftArrow,
 } from "../../public/assets";
@@ -32,7 +33,10 @@ const Navbar = () => {
       return null;
     } else {
       return (
-        <button onClick={() => router.back()} className="pl-2 lg:hidden">
+        <button
+          onClick={() => router.back()}
+          className="buttonEffect pl-2 lg:hidden"
+        >
           <LeftArrow />
         </button>
       );
@@ -42,10 +46,10 @@ const Navbar = () => {
   return (
     <>
       <div
-        className={`flex bg-white/30 backdrop-blur-md shadow-md fixed top-0 z-20 justify-center w-full items-center h-fit`}
+        className={`flex bg-white/80 backdrop-blur-md shadow-md fixed top-0 z-20 justify-center w-full items-center h-fit`}
       >
         <Search search={search} setSearch={setSearch} />
-        <div className="md:max-w-2xl lg:max-w-7xl h-16 md:h-20 w-screen flex justify-center items-center  shadow-sm gap-x-4 px-2">
+        <div className="w-full md:max-w-2xl lg:max-w-4xl xl:max-w-7xl duration-1000 h-16 md:h-20 flex justify-center items-center  shadow-sm gap-x-2 px-2">
           <motion.div
             layoutId="mishop"
             className="w-1/5 h-20 grow items-center hidden md:hidden lg:flex"
@@ -57,24 +61,24 @@ const Navbar = () => {
           {RouteBack}
           <button
             onClick={getSearch}
-            className="buttonEffect w-36 md:w-full h-10 flex justify-center items-center relative cursor-text"
+            className="buttonEffect w-full md:w-full h-10 flex justify-center items-center relative cursor-text"
           >
             <div className="absolute left-2">
               <SearchIcon />
             </div>
             <p className="absolute text-xs text-gray-600 left-10">
-              {router.query.q || "Cari di Fanvercel"}
+              {router.query.q || "Cari di Fanvercel..."}
             </p>
-            <div className="w-full rounded-2xl h-10 md:h-12 pl-10 pr-4 outline-none bg-gray-100 border border-gray-300 shadow-sm" />
+            <div className="w-full rounded-2xl h-10 md:h-12 outline-none bg-gray-100 border border-gray-300 shadow-sm" />
           </button>
           <div
-            className={`w-1/4 h-20 grow flex items-center justify-end gap-x-4`}
+            className={`w-auto h-20 grow flex items-center justify-end gap-x-3`}
           >
             <Link href={"/wishlist"} className="buttonEffect">
               <div
                 className={`${
-                  router.pathname === "/wishlist" ? "bg-green-500" : "bg-white"
-                } duration-300 bg-white w-10 h-10 rounded-full justify-center items-center md:hidden border border-green-500 hidden lg:flex active:scale-95 relative`}
+                  router.pathname === "/wishlist" ? "bg-blue-500" : "bg-white"
+                } duration-300 bg-white w-10 h-10 rounded-full justify-center items-center md:hidden border border-blue-600 hidden lg:flex active:scale-95 relative`}
               >
                 {wishlist?.length > 0 ? (
                   <div className="w-6 h-6 rounded-full bg-red-500 text-white border -right-2 -top-2 absolute flex justify-center items-center">
@@ -89,8 +93,8 @@ const Navbar = () => {
             <Link href={"/cart"} className="buttonEffect">
               <div
                 className={`${
-                  router.pathname === "/cart" ? "bg-green-500" : "bg-white"
-                } duration-300 w-10 h-10 rounded-full justify-center items-center flex border border-green-500 active:scale-95 relative`}
+                  router.pathname === "/cart" ? "bg-blue-500" : "bg-white"
+                } duration-300 w-10 h-10 rounded-full justify-center items-center flex border border-blue-600 active:scale-95 relative`}
               >
                 {cart?.length > 0 ? (
                   <div className="w-6 h-6 rounded-full bg-red-500 text-white border -right-2 -top-2 absolute flex justify-center items-center">
@@ -103,14 +107,25 @@ const Navbar = () => {
                 />
               </div>
             </Link>
-            <Link href={"/about"} className="buttonEffect">
+            <Link href={"/mail"} className="buttonEffect">
               <div
                 className={` ${
-                  router.pathname === "/about" ? "bg-green-500" : "bg-white"
-                } duration-300 bg-white w-10 h-10 rounded-full justify-center items-center flex border border-green-500 active:scale-95`}
+                  router.pathname === "/mail" ? "bg-blue-500" : "bg-white"
+                } duration-300 bg-white w-10 h-10 rounded-full justify-center items-center flex border border-blue-600 active:scale-95`}
               >
-                <UserProfileButton
-                  color={router.pathname === "/about" ? "white" : "black"}
+                <MainSvg
+                  color={router.pathname === "/mail" ? "white" : "black"}
+                />
+              </div>
+            </Link>
+            <Link href={"/feed"} className="buttonEffect">
+              <div
+                className={`lg:hidden ${
+                  router.pathname === "/feed" ? "bg-blue-500" : "bg-white"
+                } duration-300 bg-white w-10 h-10 rounded-full justify-center items-center flex border border-blue-600 active:scale-95`}
+              >
+                <DirectMessage
+                  color={router.pathname === "/feed" ? "white" : "black"}
                 />
               </div>
             </Link>

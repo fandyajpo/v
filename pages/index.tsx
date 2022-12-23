@@ -5,7 +5,7 @@ import EmblaCarousel from "../components/arch/carousel";
 import Banner from "../components/arch/banner";
 import Category from "../components/arch/category";
 import ProductCardTitle from "../components/arch/productCardTitle";
-
+import { motion } from "framer-motion";
 import { useEffect, useContext, useMemo } from "react";
 import { GlobalContext } from "../lib/Context";
 export default function Home() {
@@ -25,7 +25,7 @@ export default function Home() {
   );
 
   return (
-    <div className="flex flex-col justify-center py-24 md:py-24">
+    <div className="flex flex-col justify-center pb-24 pt-14 md:py-24">
       <Screen>
         <div className="md:max-w-2xl lg:max-w-7xl w-full h-52 flex flex-col md:flex-row grow flex-shrink-0 gap-4">
           <Banner />

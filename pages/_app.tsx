@@ -3,7 +3,7 @@ import "../styles/banner.css";
 import type { AppProps } from "next/app";
 import { TodoProvider } from "../lib/Context";
 import { ChildrenInterface } from "../types/Children";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
 import { Poppins } from "@next/font/google";
 
 const poppins = Poppins({
@@ -18,13 +18,15 @@ export default function App({ Component, pageProps }: AppProps) {
     Component.layout || (({ children }: ChildrenInterface) => <>{children}</>);
   return (
     <TodoProvider>
-      <main className={poppins.className}>
-        <AnimatePresence>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </AnimatePresence>
-      </main>
+      <AnimatePresence>
+        <AnimateSharedLayout>
+          <main className={poppins.className}>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </main>
+        </AnimateSharedLayout>
+      </AnimatePresence>
     </TodoProvider>
   );
 }

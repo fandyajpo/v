@@ -1,5 +1,6 @@
 import { memo, useMemo } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 interface Props {
   image: string;
   galery: string[];
