@@ -14,7 +14,8 @@ const Login = () => {
     <div className="bg-white w-full h-screen absolute z-50 flex flex-col items-center justify-center p-2">
       <div className="flex flex-col gap-y-4">
         <p className="text-xl font-bold">
-          We should love, no <span className="text-blue-500">php</span> needed!
+          Fanvercel love NEXTJS!, no <span className="text-blue-500">php</span>{" "}
+          needed!
         </p>
         <Image alt="nextjs" src={NextJS} />
         <div className="flex flex-col gap-y-4 items-center">
