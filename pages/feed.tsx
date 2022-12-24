@@ -4,9 +4,6 @@ import Message from "../components/feedLayout/message";
 import Story from "../components/feedLayout/story";
 import Poster from "../components/feedLayout/poster";
 import Activity from "../components/feedLayout/activity";
-import { useContext, useLayoutEffect, useMemo } from "react";
-import { GlobalContext } from "../lib/Context";
-import { useRouter } from "next/router";
 
 const Feed = () => {
   return (

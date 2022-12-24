@@ -18,8 +18,8 @@ const ProductSave = (props: Props) => {
       const concating = wishlist.concat(a);
       dispatch({
         type: "SET_WISHLIST",
+        //@ts-ignored
         payload: {
-          //@ts-ignored
           wishlist: concating,
         },
       });
