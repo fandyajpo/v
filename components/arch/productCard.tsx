@@ -20,8 +20,8 @@ const ProductCard = (props: Props) => {
       const concating = wishlist.concat(a);
       dispatch({
         type: "SET_WISHLIST",
+        //@ts-ignored
         payload: {
-          //@ts-ignored
           wishlist: concating,
         },
       });
@@ -44,8 +44,8 @@ const ProductCard = (props: Props) => {
 
       dispatch({
         type: "SET_WISHLIST",
+        //@ts-ignored
         payload: {
-          //@ts-ignored
           wishlist: filteredArray,
         },
       });
