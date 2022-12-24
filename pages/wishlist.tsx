@@ -20,8 +20,8 @@ const Search = () => {
 
       dispatch({
         type: "SET_WISHLIST",
+        //@ts-ignored
         payload: {
-          //@ts-ignored
           wishlist: filteredArray,
         },
       });

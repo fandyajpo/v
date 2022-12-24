@@ -8,8 +8,12 @@ import ProductCardTitle from "../components/arch/productCardTitle";
 import { motion } from "framer-motion";
 import { useEffect, useContext, useMemo } from "react";
 import { GlobalContext } from "../lib/Context";
+import { useRouter } from "next/router";
+import Login from "../components/layout/login";
 export default function Home() {
+  const router = useRouter();
   const { state, dispatch } = useContext(GlobalContext);
+  const { login } = useMemo(() => state, [state.login]);
 
   const men = useMemo(
     () => state?.product.filter((d: any) => d?.category === "men"),
@@ -24,6 +28,8 @@ export default function Home() {
     [state.product]
   );
 
+  if (!login) return <Login />;
+
   return (
     <div className="flex flex-col justify-center pb-24 pt-14 md:py-24">
       <Screen>
@@ -32,6 +38,7 @@ export default function Home() {
           <EmblaCarousel />
         </div>
       </Screen>
+      <button onClick={() => router.push("/structure")}>Test</button>
       <Screen>
         <div className="md:max-w-2xl lg:max-w-7xl w-full h-fit flex flex-col items-stretch grow flex-shrink-0 gap-4">
           <ProductCardTitle title="For You" />

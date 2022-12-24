@@ -1,6 +1,7 @@
 import { useContext, useMemo, useCallback } from "react";
 import { GlobalContext } from "../../lib/Context";
 import Image from "next/image";
+import Link from "next/link";
 const ProductInCart = () => {
   const { state, dispatch } = useContext(GlobalContext);
 
@@ -12,8 +13,8 @@ const ProductInCart = () => {
 
       dispatch({
         type: "SET_CART",
+        //@ts-ignored
         payload: {
-          //@ts-ignored
           cart: filteredArray,
         },
       });
@@ -63,7 +64,7 @@ const ProductInCart = () => {
                 <div className="flex flex-col justify-between">
                   <div className="w-full">
                     <p className="text-base font-bold">{a.name}</p>
-                    <p className="text-base font-light">{a.description}</p>
+                    <p className="text-xs font-light">{a.description}</p>
                   </div>
                   <div className="flex flex-row items-center justify-between">
                     <p className="text-base font-bold">$ {a.price}</p>
@@ -80,8 +81,14 @@ const ProductInCart = () => {
           );
         })
       ) : (
-        <div className="max-h-max h-full flex items-center justify-center pt-24">
+        <div className="max-h-max h-full flex flex-col items-center justify-center pt-24">
           <p className="md:text-3xl font-bold">You dont have any order item</p>
+          <Link
+            href={"/"}
+            className="buttonEffect bg-blue-500/20 text-blue-500 px-4 py-1 rounded-full font-bold"
+          >
+            Lets take a look
+          </Link>
         </div>
       )}
     </div>

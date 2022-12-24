@@ -14,15 +14,14 @@ const ProductAddCart = memo((props: Props) => {
   const addToCard = useCallback(
     (d: any) => () => {
       const concating = cart.concat(d);
-      Promise.all([
-        dispatch({
-          type: "SET_CART",
-          payload: {
-            // @ts-ignored
-            cart: concating,
-          },
-        }),
-      ]);
+
+      dispatch({
+        type: "SET_CART",
+        // @ts-ignored
+        payload: {
+          cart: concating,
+        },
+      });
     },
     [cart]
   );

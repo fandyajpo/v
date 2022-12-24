@@ -6,10 +6,19 @@ import { X } from "../../public/assets";
 import { useRouter } from "next/router";
 import { Wishlist, NotWishlist } from "../../public/assets";
 import Image from "next/image";
+import { useSpring, animated } from "@react-spring/web";
+
 const ProductTab = () => {
   const router = useRouter();
   console.log(router.query.id);
   const [itemSelection, setItemSelection] = useState(false);
+
+  const animates = useSpring({
+    from: {
+      y: 0,
+    },
+    to: { y: itemSelection ? -40 : 0 },
+  });
 
   const getItemSelect = useCallback(() => {
     setItemSelection((b) => !b);
@@ -28,8 +37,8 @@ const ProductTab = () => {
       const concating = wishlist.concat(a);
       dispatch({
         type: "SET_WISHLIST",
+        //@ts-ignored
         payload: {
-          //@ts-ignored
           wishlist: concating,
         },
       });
@@ -52,8 +61,8 @@ const ProductTab = () => {
 
       dispatch({
         type: "SET_WISHLIST",
+        //@ts-ignored
         payload: {
-          //@ts-ignored
           wishlist: filteredArray,
         },
       });
@@ -63,14 +72,15 @@ const ProductTab = () => {
 
   const addToCard = useCallback(
     (d: any) => () => {
+      // getItemSelect();
       if (itemSelection === true) {
         const concating = cart.concat(d);
         Promise.all([
           getItemSelect(),
           dispatch({
             type: "SET_CART",
+            // @ts-ignored
             payload: {
-              // @ts-ignored
               cart: concating,
             },
           }),
@@ -98,18 +108,12 @@ const ProductTab = () => {
           leaveFrom="transform opacity-100"
           leaveTo="transform opacity-0"
         >
-          <div className="flex bg-black/40 z-10 md:bg-black/40 justify-center">
-            <Transition
-              className="relative inline-block align-bottom rounded-lg text-left transform transition-all md:px-0 md:py-4 sm:align-middle w-full md:max-w-2xl lg:max-w-7xl"
-              show={itemSelection}
-              role="dialog"
-              aria-modal="true"
-              enter="transition translate-y-full ease-in"
-              enterFrom="transform translate-y-full duration-1000"
-              enterTo="transform translate-y-0"
-              leave="transition ease-in translate-y-0 duration-1000"
-              leaveFrom="transform translate-y-0 duration-1000"
-              leaveTo="transform translate-y-full"
+          <div className="flex bg-black/50 z-10 md:bg-black/40 justify-center">
+            <animated.div
+              style={{
+                ...animates,
+              }}
+              className="relative inline-block align-bottom rounded-t-lg text-left transform transition-all md:px-0 md:py-4 sm:align-middle w-full md:max-w-2xl lg:max-w-7xl"
             >
               <div className="bg-transparent w-full h-screen">
                 <div
@@ -205,7 +209,7 @@ const ProductTab = () => {
                   </div>
                 </div>
               </div>
-            </Transition>
+            </animated.div>
           </div>
         </Transition>
       </div>

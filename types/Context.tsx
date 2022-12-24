@@ -1,9 +1,10 @@
 export interface State {
-  product: [];
+  product: string[];
   totalProduct: 0;
-  cart: [];
+  cart: string[];
   totalCart: 0;
   grandTotal: 0;
-  searchHistory: [];
-  wishlist: [];
+  searchHistory: string[];
+  wishlist: string[];
+  login: boolean;
 }

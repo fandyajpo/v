@@ -11,13 +11,15 @@ const INITIAL_STATE: State = {
   grandTotal: 0,
   searchHistory: [],
   wishlist: [],
+  login: false,
 };
 
 export type Action =
   | { type: "SET_PRODUCT"; payload: State }
   | { type: "SET_CART"; payload: State }
   | { type: "SET_HISTORY"; payload: State }
-  | { type: "SET_WISHLIST"; payload: State };
+  | { type: "SET_WISHLIST"; payload: State }
+  | { type: "ISLOGIN"; payload: State };
 
 export type GlobalContextType = {
   state: State;
@@ -37,6 +39,7 @@ export const Reducer = (state: State, action: Action): State => {
         ...state,
         product: payload.product,
       };
+
     case "SET_HISTORY":
       return {
         ...state,
@@ -52,6 +55,30 @@ export const Reducer = (state: State, action: Action): State => {
         ...state,
         cart: payload.cart,
       };
+    case "ISLOGIN":
+      return {
+        ...state,
+        login: true,
+      };
+    // const itemId = state.cart.findIndex(
+    //   //@ts-ignored
+    //   (item: any) => item.id === payload.id
+    // );
+    // if (itemId >= 0) {
+    //   return {
+    //     ...state,
+    //     //@ts-ignored
+    //     cart: (payload.cart[itemId].quantity += 1),
+    //   };
+    // } else {
+    //   //@ts-ignored
+    //   const tempProduct = { ...payload.cart, quantity: 1 };
+    //   return {
+    //     ...state,
+    //     //@ts-ignored
+    //     cart: [tempProduct],
+    //   };
+    // }
 
     default:
       throw new Error("Type is not defined");

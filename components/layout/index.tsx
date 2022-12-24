@@ -5,13 +5,14 @@ import BottomTab from "../m/bottomTab";
 import { useRouter } from "next/router";
 import { Fragment, useMemo } from "react";
 import ProductTab from "../m/productTab";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useLayoutEffect } from "react";
 import { GlobalContext } from "../../lib/Context";
 import Footer from "./footer";
 import FeedNavigation from "./feedNavigation";
+
 const Layout = ({ children }: ChildrenInterface) => {
   const { state, dispatch } = useContext(GlobalContext);
-  const { product } = useMemo(() => state, [state.product]);
+  const { product, login } = useMemo(() => state, [state.product, state.login]);
   useEffect(() => {
     async function Getter() {
       console.log("fetch again");
@@ -51,6 +52,14 @@ const Layout = ({ children }: ChildrenInterface) => {
         </div>
       );
   }, [router]);
+
+  useLayoutEffect(() => {
+    console.log("render");
+    const isLogin = () => {
+      if (login === false) return router.push("/");
+    };
+    isLogin();
+  }, [login]);
 
   return (
     <>
