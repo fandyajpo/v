@@ -8,7 +8,7 @@ import Image from "next/image";
 interface Props {
   product: any;
 }
-
+// aas
 const ProductCard = (props: Props) => {
   const { product } = useMemo(() => props, [props]);
 
