@@ -28,8 +28,8 @@ const Search = () => {
       const concating = wishlist.concat(a);
       dispatch({
         type: "SET_WISHLIST",
+        //@ts-ignored
         payload: {
-          //@ts-ignored
           wishlist: concating,
         },
       });
@@ -52,8 +52,8 @@ const Search = () => {
 
       dispatch({
         type: "SET_WISHLIST",
+        //@ts-ignored
         payload: {
-          //@ts-ignored
           wishlist: filteredArray,
         },
       });
