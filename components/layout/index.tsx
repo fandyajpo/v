@@ -53,7 +53,7 @@ const Layout = ({ children }: ChildrenInterface) => {
       );
   }, [router]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     console.log("render");
     const isLogin = () => {
       if (login === false) return router.push("/");

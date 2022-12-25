@@ -39,13 +39,12 @@ const Modal = memo((props: Props) => {
   const queryMaster = useCallback(
     async (e: any) => {
       if (search === true) {
-        console.log("HAHA fetch");
         const getter = await fetch(`/api/query?q=${e.target.value || null}`);
         const data = await getter.json();
         return setQData(data?.data);
       }
     },
-    [router.query]
+    [router.query.q, inputRef, search]
   );
 
   const onSubmit = useCallback(
@@ -98,7 +97,7 @@ const Modal = memo((props: Props) => {
   useEffect(() => {
     if (search === true) {
       setTimeout(() => {
-        inputRef.current.focus();
+        onAnimationEnd();
       }, 100);
     }
   }, [search]);
@@ -206,7 +205,27 @@ const Modal = memo((props: Props) => {
                       key={l}
                       className="flex items-center justify-between px-4 border-b mb-2"
                     >
-                      <p className="py-1">{a}</p>
+                      <button
+                        className="py-1"
+                        onClick={() => {
+                          getSearch(),
+                            router.push(
+                              {
+                                pathname: "/search",
+                                query: `q=${a}`,
+                              },
+                              {
+                                pathname: "/search",
+                                query: `q=${a}`,
+                              },
+                              {
+                                shallow: false,
+                              }
+                            );
+                        }}
+                      >
+                        {a}
+                      </button>
                       <button
                         className="text-gray-400"
                         onClick={RemoveRecent(l)}
