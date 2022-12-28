@@ -44,7 +44,7 @@ const Modal = memo((props: Props) => {
         return setQData(data?.data);
       }
     },
-    [router.query.q, inputRef, search]
+    [router.query.q, inputRef]
   );
 
   const onSubmit = useCallback(

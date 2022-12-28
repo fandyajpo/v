@@ -38,7 +38,7 @@ export default function Home() {
           <EmblaCarousel />
         </div>
       </Screen>
-      <button onClick={() => router.push("/structure")}>Test</button>
+      <button onClick={() => router.push("/about")}>About the app</button>
       <Screen>
         <div className="md:max-w-2xl lg:max-w-7xl w-full h-fit flex flex-col items-stretch grow flex-shrink-0 gap-4">
           <ProductCardTitle title="For You" />
