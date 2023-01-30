@@ -5,7 +5,7 @@ import EmblaCarousel from "../components/arch/carousel";
 import Banner from "../components/arch/banner";
 import Category from "../components/arch/category";
 import ProductCardTitle from "../components/arch/productCardTitle";
-import { motion } from "framer-motion";
+
 import { useEffect, useContext, useMemo } from "react";
 import { GlobalContext } from "../lib/Context";
 import { useRouter } from "next/router";
